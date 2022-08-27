@@ -1,0 +1,39 @@
+name: CH57x Series
+mcu_type: 3
+device_type: 0x13
+support_usb: true
+support_serial: true
+support_net: false
+# CH571/CH573: RISC-V3A
+# Others: Cortext-M0
+description: CH57x (Cortex-M0/RISC-V3A BLE 4.2) Series
+variants:
+  - name: CH571
+    chip_id: 0x71
+    flash_size: 196608
+    eeprom_size: 32768
+    eeprom_start_addr: 196608
+
+  - name: CH573
+    chip_id: 0x73
+    flash_size: 458752
+    eeprom_size: 32768
+    eeprom_start_addr: 458752
+
+  - name: CH577
+    chip_id: 0x77
+    flash_size: 131072
+    eeprom_size: 2048
+    eeprom_start_addr: 131072
+
+  - name: CH578
+    chip_id: 0x58
+    flash_size: 163840
+    eeprom_size: 2048
+    eeprom_start_addr: 163840
+
+  - name: CH579
+    chip_id: 0x79
+    flash_size: 256000
+    eeprom_size: 2048
+    eeprom_start_addr: 256000

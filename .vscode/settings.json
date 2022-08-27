@@ -1,0 +1,11 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "yaml.schemas": {
+    "schema.json": "/devices/**/*.yaml"
+  },
+  "yaml.customTags": ["&config_registers_ch548_ch549"]
+}

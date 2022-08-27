@@ -1,0 +1,102 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/device",
+  "definitions": {
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "mcu_type": { "type": "integer" },
+        "device_type": { "type": "integer" },
+        "support_usb": { "type": "boolean" },
+        "support_serial": { "type": "boolean" },
+        "support_net": { "type": "boolean" },
+        "description": { "type": "string" },
+        "config_registers": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/config-register" }
+        },
+        "variants": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/variant" }
+        }
+      },
+      "required": ["description", "device_type", "mcu_type", "name", "variants"]
+    },
+    "config-register": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "offset": { "type": "integer" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "reset": { "type": "integer" },
+        "type": { "$ref": "#/definitions/int-type" },
+        "fields": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/field" }
+        },
+        "explaination": {
+          "$ref": "#/definitions/explaination"
+        }
+      },
+      "required": ["name", "offset", "reset"]
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bit_range": {
+          "type": "array",
+          "items": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "integer", "minimum": 0 }
+          ]
+        },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "explaination": { "$ref": "#/definitions/explaination" }
+      },
+      "required": ["bit_range", "name"]
+    },
+    "explaination": {
+      "type": "object",
+      "additionalProperties": true,
+      "propertyNames": {
+        "oneOf": [
+          { "type": "integer", "minimum": 0 },
+          { "type": "string", "pattern": "0b[01]+" },
+          { "const": "_" }
+        ]
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "chip_id": { "type": "integer" },
+        "flash_size": { "$ref": "#/definitions/eeprom-size" },
+        "eeprom_size": { "$ref": "#/definitions/eeprom-size" },
+        "eeprom_start_addr": { "$ref": "#/definitions/eeprom-size" },
+        "config_registers": { "type": "string" },
+        "alt_chip_ids": {
+          "type": "array",
+          "items": { "oneOf": [{ "type": "integer" }, { "const": "ALL" }] }
+        },
+        "support_usb": { "type": "boolean" },
+        "support_serial": { "type": "boolean" },
+        "support_net": { "type": "boolean" }
+      },
+      "required": ["chip_id", "flash_size", "name"]
+    },
+    "eeprom-size": {
+      "anyOf": [
+        { "type": "integer", "minimum": 0 },
+        { "type": "string", "pattern": "\\d+K$" }
+      ]
+    },
+    "int-type": { "enum": ["u32"] }
+  }
+}

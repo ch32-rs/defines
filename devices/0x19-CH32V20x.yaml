@@ -1,0 +1,47 @@
+name: CH32V20x Series
+mcu_type: 9
+device_type: 0x19
+support_net: false
+support_usb: true
+support_serial: true
+description: CH32V20x (RISC-V4B/V4C) Series
+# chip_id 0x8X for V4B, chip_id 0x3X for V4C
+variants:
+  - name: CH32V208WBU6
+    chip_id: 0x80
+    flash_size: 480K
+  - name: CH32V208RBT6
+    chip_id: 0x81
+    flash_size: 128K
+  - name: CH32V208CBU6
+    chip_id: 0x82
+    flash_size: 128K
+  - name: CH32V208GBU6
+    chip_id: 0x83
+    flash_size: 128K
+  - name: CH32V203C8U6
+    chip_id: 0x30
+    flash_size: 64K
+  - name: CH32V203C8T6
+    chip_id: 0x31
+    flash_size: 64K
+  - name: CH32V203K8T6
+    chip_id: 0x32
+    flash_size: 64K
+  - name: CH32V203C6T6
+    chip_id: 0x33
+    flash_size: 32K
+  - name: CH32V203RBT6
+    chip_id: 0x34
+    flash_size: 128K
+  - name: CH32V203K6T6
+    chip_id: 0x35
+    flash_size: 32K
+  - name: CH32V203G6U6
+    chip_id: 0x36
+    flash_size: 32K
+  - name: CH32V203F6P6
+    chip_id: 0x37
+    alt_chip_ids: [0x39]
+    flash_size: 32K
+  # FIXME: missing 0x38
