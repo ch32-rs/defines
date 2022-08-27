@@ -7,5 +7,7 @@
   "yaml.schemas": {
     "schema.json": "/devices/**/*.yaml"
   },
-  "yaml.customTags": ["&config_registers_ch548_ch549"]
+  "files.associations": {
+    "LICENSE": "plantext"
+  }
 }
